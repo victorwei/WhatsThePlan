@@ -244,6 +244,37 @@ class LocationController: NSObject {
         completion(true, locationData)
 
     }
+    
+    
+    
+    
+    
+//    func urlsessiontest() {
+//        
+//        
+//        let url = URL(string: "https://itunes.apple.com/us/rss/topalbums/limit=20/json")
+//        
+////        let data = try! Data(contentsOf: url!)
+////        
+////        let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+////        
+////        print(json)
+//        
+//        let session = URLSession.shared
+//        
+//        session.dataTask(with: url!) { (data, response, error) in
+//            if error != nil {
+//                print("\(error?.localizedDescription)")
+//                
+//            } else {
+//                
+//                let json = try! JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
+//                print(json)
+//            }
+//        }.resume()
+        
+        
+//    }
 
  
 }

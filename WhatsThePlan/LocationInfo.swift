@@ -26,12 +26,15 @@ class LocationInfo: NSObject {
     
     var marker: GMSMarker?
     
-    var locationValues: [String] = []
-    var locationTypes: [String] = []
+    var locationValues: [String]!
+    var locationTypes: [String]!
     
     
     
     func fillOutLocationValues () {
+        
+        locationTypes = []
+        locationValues = []
         
         if name != nil {
             locationTypes.append("name")
@@ -59,9 +62,13 @@ class LocationInfo: NSObject {
             locationValues.append(String(rating!))
         }
         
-        if price != nil {
+        if price != nil  && price != 0 {
             locationTypes.append("price")
-            locationValues.append(String(price!))
+            var priceDollar = ""
+            for _ in 0..<price! {
+                priceDollar += "$"
+            }
+            locationValues.append(priceDollar)
         }
         
         if availability != nil {
@@ -69,7 +76,7 @@ class LocationInfo: NSObject {
             
             var availabilityString = ""
             for member in availability! {
-                availabilityString = member + "\n"
+                availabilityString += member + "\n"
             }
             locationValues.append(availabilityString)
         }

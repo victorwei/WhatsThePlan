@@ -25,7 +25,10 @@ class WritePlanViewController: UIViewController {
     func setup() {
         textView.delegate = self
         textView.text = placeHolderText
-        textView.scrollRangeToVisible(NSMakeRange(0, 0))
+        //aatextView.scrollRangeToVisible(NSMakeRange(0, 0))
+        textView.textColor = UIColor.lightGray
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,16 +38,26 @@ class WritePlanViewController: UIViewController {
     
     @IBAction func savePlan(_ sender: Any) {
         
-        if textView.text != "" || textView.text == placeHolderText {
+        if textView.text != "" || textView.text != placeHolderText {
             delegate.getPlan(thePlan: textView.text)
             self.navigationController?.popViewController(animated: true)
             
         } else {
             //display alert message
+            displayAlert()
         }
+    }
+    
+    
+    
+    
+    func displayAlert() {
         
+        let alertController = UIAlertController(title: "Error", message: "Please write a plan for other users", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertController.addAction(alertAction)
         
-        
+        present(alertController, animated: true, completion: nil)
     }
 
 }

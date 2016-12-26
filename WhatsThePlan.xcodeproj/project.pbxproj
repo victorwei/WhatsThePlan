@@ -27,6 +27,10 @@
 		574991791E00788A009F3F58 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574991771E00788A009F3F58 /* FBSDKLoginKit.framework */; };
 		5749917B1E0078CB009F3F58 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749917A1E0078CB009F3F58 /* FBSDKShareKit.framework */; };
 		5749917D1E009939009F3F58 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749917C1E009939009F3F58 /* SignUpViewController.swift */; };
+		575744171E045CB40067CE81 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575744151E045CB40067CE81 /* TitleTableViewCell.swift */; };
+		575744181E045CB40067CE81 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575744161E045CB40067CE81 /* TitleTableViewCell.xib */; };
+		5757441B1E045D7B0067CE81 /* SectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575744191E045D7B0067CE81 /* SectionHeaderTableViewCell.swift */; };
+		5757441C1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5757441A1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib */; };
 		575CD20B1DFB30DC004E0A3D /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CD20A1DFB30DC004E0A3D /* CustomSearchBar.swift */; };
 		575CD20D1DFB38B0004E0A3D /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CD20C1DFB38B0004E0A3D /* CustomSearchController.swift */; };
 		57850B271E01E149000186AA /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57850B261E01E149000186AA /* CityViewModel.swift */; };
@@ -73,8 +77,6 @@
 		57EF2E7D1DF47C5D002C7909 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF2E7B1DF47C5D002C7909 /* AddLocationViewController.swift */; };
 		57EF2E801DF4836C002C7909 /* LocationSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF2E7F1DF4836C002C7909 /* LocationSearchResultsController.swift */; };
 		57F369841DFCCFB50031F3D5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F369831DFCCFB50031F3D5 /* Colors.swift */; };
-		57F369891DFCD4A00031F3D5 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F369871DFCD4A00031F3D5 /* TitleTableViewCell.swift */; };
-		57F3698A1DFCD4A00031F3D5 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F369881DFCD4A00031F3D5 /* TitleTableViewCell.xib */; };
 		57F3698D1DFCD66D0031F3D5 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F3698B1DFCD66D0031F3D5 /* LocationViewController.swift */; };
 		57F3698E1DFCD66D0031F3D5 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F3698C1DFCD66D0031F3D5 /* LocationViewController.xib */; };
 		752CFE30C87632FC9D3C4715 /* Pods_WhatsThePlanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2BA9A98CC2676CEC558B1DC /* Pods_WhatsThePlanTests.framework */; };
@@ -122,6 +124,10 @@
 		574991771E00788A009F3F58 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		5749917A1E0078CB009F3F58 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		5749917C1E009939009F3F58 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		575744151E045CB40067CE81 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		575744161E045CB40067CE81 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
+		575744191E045D7B0067CE81 /* SectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		5757441A1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		575CD20A1DFB30DC004E0A3D /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		575CD20C1DFB38B0004E0A3D /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		57850B261E01E149000186AA /* CityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
@@ -175,8 +181,6 @@
 		57EF2E7B1DF47C5D002C7909 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		57EF2E7F1DF4836C002C7909 /* LocationSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsController.swift; sourceTree = "<group>"; };
 		57F369831DFCCFB50031F3D5 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		57F369871DFCD4A00031F3D5 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
-		57F369881DFCD4A00031F3D5 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
 		57F3698B1DFCD66D0031F3D5 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		57F3698C1DFCD66D0031F3D5 /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		77F48E2328CEAE0E5DA5EB4B /* Pods-WhatsThePlanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsThePlanUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsThePlanUITests/Pods-WhatsThePlanUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -359,10 +363,12 @@
 			children = (
 				578D4EC81DF9EED800B85EE2 /* UserTableViewCell.swift */,
 				578D4EC91DF9EED800B85EE2 /* UserTableViewCell.xib */,
-				57F369871DFCD4A00031F3D5 /* TitleTableViewCell.swift */,
-				57F369881DFCD4A00031F3D5 /* TitleTableViewCell.xib */,
+				575744151E045CB40067CE81 /* TitleTableViewCell.swift */,
+				575744161E045CB40067CE81 /* TitleTableViewCell.xib */,
 				578D4ECC1DF9EEFD00B85EE2 /* LocationTableViewCell.swift */,
 				578D4ECD1DF9EEFD00B85EE2 /* LocationTableViewCell.xib */,
+				575744191E045D7B0067CE81 /* SectionHeaderTableViewCell.swift */,
+				5757441A1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib */,
 				57286BB21DFF0C99005214B2 /* View Location */,
 			);
 			name = "View Plan";
@@ -576,7 +582,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57F3698A1DFCD4A00031F3D5 /* TitleTableViewCell.xib in Resources */,
 				571A58D81DF639EC00D899AA /* PlanTableViewCell.xib in Resources */,
 				571A58DC1DF63B7600D899AA /* SectionTableViewCell.xib in Resources */,
 				57F3698E1DFCD66D0031F3D5 /* LocationViewController.xib in Resources */,
@@ -589,6 +594,8 @@
 				578D4ECB1DF9EED800B85EE2 /* UserTableViewCell.xib in Resources */,
 				57850B2B1E01EE33000186AA /* CityResultsTableViewCell.xib in Resources */,
 				57286BB61DFF0CB6005214B2 /* LocationPhotoTableViewCell.xib in Resources */,
+				5757441C1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib in Resources */,
+				575744181E045CB40067CE81 /* TitleTableViewCell.xib in Resources */,
 				57AA6B1C1DDCF80D008E478F /* Main.storyboard in Resources */,
 				578D4ED91DFA1DFE00B85EE2 /* MapOfPlanViewController.xib in Resources */,
 				57286BC21DFF3D96005214B2 /* LocationDetailTableViewCell.xib in Resources */,
@@ -774,6 +781,7 @@
 				575CD20B1DFB30DC004E0A3D /* CustomSearchBar.swift in Sources */,
 				57286BC11DFF3D96005214B2 /* LocationDetailTableViewCell.swift in Sources */,
 				57F3698D1DFCD66D0031F3D5 /* LocationViewController.swift in Sources */,
+				5757441B1E045D7B0067CE81 /* SectionHeaderTableViewCell.swift in Sources */,
 				575CD20D1DFB38B0004E0A3D /* CustomSearchController.swift in Sources */,
 				571A58DB1DF63B7600D899AA /* SectionTableViewCell.swift in Sources */,
 				57F369841DFCCFB50031F3D5 /* Colors.swift in Sources */,
@@ -787,9 +795,9 @@
 				5749917D1E009939009F3F58 /* SignUpViewController.swift in Sources */,
 				57907C0E1DF67B6800821A06 /* WritePlanViewController.swift in Sources */,
 				57286BC41DFF4AC6005214B2 /* Database.swift in Sources */,
-				57F369891DFCD4A00031F3D5 /* TitleTableViewCell.swift in Sources */,
 				571A58CE1DF62E6D00D899AA /* DescriptionTableViewCell.swift in Sources */,
 				57850B2A1E01EE33000186AA /* CityResultsTableViewCell.swift in Sources */,
+				575744171E045CB40067CE81 /* TitleTableViewCell.swift in Sources */,
 				578A72791DF1E31700876A13 /* CityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

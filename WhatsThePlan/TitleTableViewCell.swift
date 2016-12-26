@@ -2,7 +2,7 @@
 //  TitleTableViewCell.swift
 //  WhatsThePlan
 //
-//  Created by Victor Wei on 12/10/16.
+//  Created by Victor Wei on 12/16/16.
 //  Copyright © 2016 victorW. All rights reserved.
 //
 
@@ -10,6 +10,9 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

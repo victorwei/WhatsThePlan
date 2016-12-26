@@ -28,6 +28,8 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         setup()
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.darkGray
+        
         
     }
 

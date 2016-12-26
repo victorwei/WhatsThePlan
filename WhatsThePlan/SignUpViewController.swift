@@ -22,6 +22,8 @@ class SignUpViewController: UIViewController {
     
     var userPhoto: Data!
     
+    let pickerController = UIImagePickerController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,10 @@ class SignUpViewController: UIViewController {
     
     
     func setup() {
+        
+        
+        bioTextView.delegate = self
+        bioTextView.textColor = UIColor.lightGray
         
         userImgView.layer.cornerRadius = userImgView.frame.width / 2
         userImgView.clipsToBounds = true
@@ -61,6 +67,8 @@ class SignUpViewController: UIViewController {
             userPhoto = photo
         }
         
+        
+        pickerController.delegate = self
         
     }
     
@@ -96,14 +104,23 @@ class SignUpViewController: UIViewController {
         
     }
     
-    
-    
-
-    
-    
 
 
     // MARK: - IBActions
+    
+    
+    @IBAction func changeUserPhoto(_ sender: Any) {
+        pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = false
+        
+        present(pickerController, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    
+    
     
     @IBAction func backAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -115,4 +132,40 @@ class SignUpViewController: UIViewController {
         verifyFields()
     }
 
+}
+
+
+
+extension SignUpViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        bioTextView.text = ""
+        bioTextView.textColor = UIColor.black
+    }
+    
+}
+
+
+
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let imagePicked = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            userImgView.image = imagePicked
+            
+            userPhoto = UIImagePNGRepresentation(imagePicked)
+            
+            
+        }
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

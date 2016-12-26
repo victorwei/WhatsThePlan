@@ -36,8 +36,13 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setup()
 
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
     }
+    
     
     func setup() {
         
@@ -61,6 +66,14 @@ class HomeViewController: UIViewController {
         
         
         searchBar.barTintColor = UIColor.appTheme
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor.appTheme.cgColor
+        
+        
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.appTheme
+        
+        self.navigationItem.title = "What's The Plan"
+        
         
     }
     
@@ -92,12 +105,6 @@ class HomeViewController: UIViewController {
         
         self.tabBarController?.selectedIndex = 1
         
-        
-//        let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CityViewController") as! CityViewController
-//        let destinationNC = UINavigationController(rootViewController: destinationVC)
-//        destinationVC.searchBar.placeholder = cityString
-//        present(destinationNC, animated: true, completion: nil)
-//        
         
     }
     
@@ -175,6 +182,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let city = cities[indexPath.row]
         
         goToCityView(cityString: city)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

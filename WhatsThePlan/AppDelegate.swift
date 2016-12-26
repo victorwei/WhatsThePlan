@@ -41,6 +41,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
+        //set up navigation bar
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarPosition.any, barMetrics: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+
+        UINavigationBar.appearance().backgroundColor = UIColor.appTheme
+        UINavigationBar.appearance().barTintColor = UIColor.appTheme
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.appTheme
+        
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -119,4 +132,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}
+
 

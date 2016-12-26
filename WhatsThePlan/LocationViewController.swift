@@ -38,6 +38,9 @@ class LocationViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 30
         
         
         let imageNib = UINib(nibName: "LocationPhotoTableViewCell", bundle: nil)
@@ -51,6 +54,8 @@ class LocationViewController: UIViewController {
         
         locationInfo.fillOutLocationValues()
         locationInfo.createMarker()
+        
+        navigationItem.title = locationInfo.locationValues[0]
     }
     
     
@@ -90,11 +95,12 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath) as! LocationDetailTableViewCell
-            cell.infoLabel.text = locationInfo.locationValues[indexPath.row]
+            
+            cell.infoTextView.text = locationInfo.locationValues[indexPath.row]
             
             if indexPath.row == 0 {
                 //cell.detailLabel.font = cell.detailLabel.font.fontWithSize(20)
-                cell.infoLabel.font = UIFont.boldSystemFont(ofSize: 20)
+                cell.infoTextView.font = UIFont.boldSystemFont(ofSize: 20)
             }
             //set whihc info icon to display based on which information is displayed
             switch locationInfo.locationTypes[indexPath.row] {
@@ -102,7 +108,7 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.iconImg.image = UIImage(named: "address")
             case "website":
                 cell.iconImg.image = UIImage(named: "website")
-            case "phonenumber":
+            case "phone":
                 cell.iconImg.image = UIImage(named: "phone")
             case "price":
                 cell.iconImg.image = UIImage(named: "price")
@@ -132,24 +138,17 @@ extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-            
-        case 0:
-            return self.view.frame.height/4
-            
-        case 1:
-            if indexPath.row == 0 {
-                return 20
-            } else {
-                return 10
-            }
-        case 2:
-            return self.view.frame.width
-        default:
-            return 10
-         
+        
+        if indexPath.section == 0 {
+            return (view.frame.width * 0.7)
+        } else if indexPath.section == 2 {
+            return (view.frame.width)
         }
+        return UITableViewAutomaticDimension
     }
+    
+    
+    
     
     
 }

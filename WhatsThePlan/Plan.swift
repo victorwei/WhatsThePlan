@@ -25,6 +25,7 @@ class Plan: NSObject {
 
     var locations: [LocationInfo]?
     var foodDrinks: [LocationInfo]?
+    var allLocations: [LocationInfo]?
     
     
     var userId: String?
@@ -98,6 +99,11 @@ class Plan: NSObject {
                             }
                         }
                     }
+                    if allLocations == nil {
+                        allLocations = []
+                    }
+                    allLocations?.append(locationInfo)
+                    
                     if isFood{
                         
                         if foodDrinks == nil {
@@ -122,16 +128,17 @@ class Plan: NSObject {
     
     func getMarkerInfo() {
         
-        guard let locationsplaces = locations else {
+        guard let locationsplaces = allLocations else {
             return
         }
+        locationMarkers = []
         
         for location in locationsplaces {
             
             let coordinate = CLLocationCoordinate2DMake(location.latitude!, location.longitude!)
             let marker = GMSMarker(position: coordinate)
             marker.title = location.name!
-            
+
             locationMarkers?.append(marker)
     
         }

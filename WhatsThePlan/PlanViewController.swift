@@ -50,6 +50,10 @@ class PlanViewController: UIViewController {
         let locationNib = UINib(nibName: "LocationTableViewCell", bundle: nil)
         tableView.register(locationNib, forCellReuseIdentifier: "locationCell")
         
+        
+        let sectionNib = UINib(nibName: "SectionHeaderTableViewCell", bundle: nil)
+        tableView.register(sectionNib, forCellReuseIdentifier: "headerCell")
+        
     }
     
     
@@ -76,22 +80,13 @@ class PlanViewController: UIViewController {
                         }
                         
                         self.tableView.reloadData()
-                        
-                        
                     }
                     self.tableView.reloadData()
                 }
                 
             }
         }
-        
-        
-        
-        
-        
 
-        
-        
         Database.sharedInstance.getSpecificUserInfo(userId: plan.userId!) { (success, userData) in
             if success {
                 self.user = userData
@@ -102,6 +97,10 @@ class PlanViewController: UIViewController {
     
 
     @IBAction func mapViewOfPlan(_ sender: Any) {
+        
+        let destinationVC = MapOfPlanViewController(nibName: "MapOfPlanViewController", bundle: nil)
+        destinationVC.plan = plan
+        self.navigationController?.pushViewController(destinationVC, animated: true)
         
         
         
@@ -164,13 +163,13 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.namelabel.text = name
             cell.userImg.image = UIImage(data: userPhoto)
+            cell.setImage()
             
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as! TitleTableViewCell
-            cell.textLabel?.text = plan.title
-            
+            cell.titleLabel.text = plan.title
             return cell
             
         case 2:
@@ -227,8 +226,14 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             if let types = plan.locations?[index].types {
                 var typetext = ""
                 for type in types {
-                    typetext = type + ", "
+                    typetext = typetext + type + ", "
                 }
+                let typesCount = typetext.characters.count
+                let stringCount = typesCount - 2
+                
+                let index = typetext.index(typetext.startIndex, offsetBy: stringCount)
+                typetext = typetext.substring(to: index)
+                
                 cell.typesLabel.text = typetext
             }
             
@@ -256,8 +261,14 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             if let types = plan.foodDrinks?[index].types {
                 var typetext = ""
                 for type in types {
-                    typetext = type + ", "
+                    typetext = typetext + type + ", "
                 }
+                let typesCount = typetext.characters.count
+                let stringCount = typesCount - 2
+                
+                let index = typetext.index(typetext.startIndex, offsetBy: stringCount)
+                typetext = typetext.substring(to: index)
+                
                 cell.typesLabel.text = typetext
             }
             
@@ -296,7 +307,7 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return 70
         case 1:
-            return 20
+            return UITableViewAutomaticDimension
         case 2:
             return UITableViewAutomaticDimension
         default:
@@ -324,7 +335,38 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! SectionHeaderTableViewCell
+        
+        switch section {
+        case 3:
+            cell.sectionLabel.text = sectionHeaders[3]
+            return cell
+            
+        case 4:
+            cell.sectionLabel.text = sectionHeaders[4]
+            return cell
+        default:
+            return nil
+        }
+        
+    }
 
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 3:
+            return 20
+        case 4:
+            return 20
+        default:
+            return 0
+        }
+    }
 }
 
 

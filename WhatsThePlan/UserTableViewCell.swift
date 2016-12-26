@@ -19,12 +19,17 @@ class UserTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        userImg.layer.cornerRadius = userImg.frame.width / 2
-        userImg.clipsToBounds = true
+        
         
         // Initialization code
     }
 
+    func setImage() {
+        userImg.layer.cornerRadius = userImg.frame.width / 2
+        userImg.clipsToBounds = true
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
