@@ -51,8 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.appTheme
         UIApplication.shared.statusBarStyle = .lightContent
         
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.appTheme
-        
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

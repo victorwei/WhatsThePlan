@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
     func goToCityView(cityString: String) {
         City.sharedInstance.cityName = cityString
         
-        locationController.getLatLongFromCity(cityName: cityString) { (result, lat, lng) in
+        locationController.getLatLongFromCity(cityName: cityString) { (result, lat, lng, placeId) in
             if result {
                 //do something
                 City.sharedInstance.latitude = lat
@@ -171,11 +171,33 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell", for: indexPath) as! CityTableViewCell
         cell.label.text = cities[indexPath.row]
+        
+        
+        DispatchQueue.global(qos: .default).async {
+            
+            self.locationController.getLatLongFromCity(cityName: self.cities[indexPath.row], completion: { (success, lat, lng, placeId) in
+                
+                if success {
+                    
+                    self.locationController.getCitiesPicture(placeId: placeId!, completion: { (success, photo) in
+                        if success {
+                            
+                            DispatchQueue.main.async {
+                                cell.imgView.image = UIImage(data: photo!)
+                            }
+                            
+                        }
+                    })
+                    
+                }
+            })
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.frame.height / 4
+        return self.view.frame.height / 3.5
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

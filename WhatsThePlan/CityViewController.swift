@@ -228,7 +228,7 @@ extension CityViewController: presentCityView {
         
         City.sharedInstance.cityName = cityString
         
-        locationAdapter.getLatLongFromCity(cityName: cityString) { (result, lat, lng) in
+        locationAdapter.getLatLongFromCity(cityName: cityString) { (result, lat, lng, placeId) in
             if result {
                 //do something
                 City.sharedInstance.latitude = lat

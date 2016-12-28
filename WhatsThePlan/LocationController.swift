@@ -23,7 +23,7 @@ class LocationController: NSObject {
     
     
     
-    func getLatLongFromCity(cityName: String, completion: (_ result: Bool, _ latitude: Double?, _ longitude: Double?)-> ()) {
+    func getLatLongFromCity(cityName: String, completion: (_ result: Bool, _ latitude: Double?, _ longitude: Double?, _ placeId: String?)-> ()) {
         
         //set the url string as data and get the JSON serialization of it
         let cityString = cityName.replacingOccurrences(of: " ", with: "%20")
@@ -34,22 +34,24 @@ class LocationController: NSObject {
         //check for a valid json result
         guard json["status"] as? String == "OK" else {
             print("do something")
-            completion(false, nil, nil)
+            completion(false, nil, nil, nil)
             return
         }
         //parse the json result to grab the latitude and longitude values
         guard let results = json["results"] as? NSArray,
             let firstEntry = results[0] as? NSDictionary,
+            let placeId = firstEntry["place_id"] as? String,
             let geometry = firstEntry["geometry"] as? NSDictionary,
             let location = geometry["location"] as? NSDictionary else {
                print("Location not found")
-                completion(false, nil, nil)
+                completion(false, nil, nil, nil)
                 return
         }
         
+        
         let latitude = location["lat"] as! Double
         let longitude = location["lng"] as! Double
-        completion(true, latitude, longitude)
+        completion(true, latitude, longitude, placeId)
         
 
     }
@@ -174,6 +176,27 @@ class LocationController: NSObject {
         let lng = location["lng"] as! Double
         
         return (lat, lng)
+    }
+    
+    
+    
+    func getCitiesPicture (placeId: String, completion: (_ result: Bool, _ picture: Data?) -> ()) {
+        
+        let urlString = "\(baseURLforDetails)\(placeId)&key=\(googleAPIkey)"
+        let url = URL(string: urlString)
+        let data = try! Data(contentsOf: url!)
+        let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! NSDictionary
+        
+        guard json["status"] as? String == "OK",
+            let result = json["result"] as? NSDictionary else {
+                print("do something")
+                completion(false, nil)
+                return
+        }
+        
+        let picture = getPictureForLocation(data: result)
+        completion(true, picture)
+        
     }
     
     

@@ -193,7 +193,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VFh-98-Rbz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="NJj-7O-ALT"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0a8-rQ-lN8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0a8-rQ-lN8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -434,11 +434,16 @@
                                     <constraint firstAttribute="height" constant="1" id="zxE-8r-52j"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-32-G3g">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-32-G3g" customClass="customTextView" customModule="WhatsThePlan" customModuleProvider="target">
                                 <rect key="frame" x="38" y="391" width="300" height="133"/>
                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzK-hC-e4g" customClass="CustomButton" customModule="WhatsThePlan" customModuleProvider="target">
                                 <rect key="frame" x="38" y="574" width="300" height="40"/>
@@ -623,7 +628,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SwI-KI-ttG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X6J-S3-j7x">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X6J-S3-j7x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -700,7 +705,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DRm-oh-wmK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NhJ-hA-SQA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NhJ-hA-SQA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -718,7 +723,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jmA-yu-Pqy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ny6-oR-y14">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ny6-oR-y14">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
