@@ -12,6 +12,10 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 
 
+enum loginError {
+    case empty, invalid
+}
+
 
 class LoginViewController: UIViewController {
     
@@ -21,15 +25,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
     
     
+    @IBOutlet weak var fbLogin: FBSDKLoginButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         setup()
-        
-        
     }
 
     
@@ -72,6 +74,27 @@ class LoginViewController: UIViewController {
     
     
     
+    //alert function
+    func invalidLoginAlert(alert: loginError) {
+        
+        var alertController = UIAlertController()
+        
+        if alert == .invalid {
+            alertController = UIAlertController(title: "Error", message: "Invalid Login.  Username and password do not match.", preferredStyle: .alert)
+        } else if alert == .empty {
+            alertController = UIAlertController(title: "Error", message: "Please fill out the username and password fields.", preferredStyle: .alert)
+        }
+        
+        
+        let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
+    
     // MARK: - IBActions
     
     
@@ -89,6 +112,7 @@ class LoginViewController: UIViewController {
                 } else {
                     
                     //return alert stating username /pw dont' match
+                    self.invalidLoginAlert(alert: loginError.invalid)
                     
                 }
                 
@@ -97,6 +121,8 @@ class LoginViewController: UIViewController {
         } else {
             
             //return alert stating fields are not filled out
+            invalidLoginAlert(alert: loginError.empty)
+        
         }
        
         
@@ -108,9 +134,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func touchSignUpBtn(_ sender: Any) {
-        
         goSignUp()
-        
     }
     
     

@@ -218,6 +218,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title-bg" translatesAutoresizingMaskIntoConstraints="NO" id="rIv-Yc-dkT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whats The Plan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bE7-fE-5HF">
                                 <rect key="frame" x="128" y="100" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -287,8 +290,8 @@
                                     <action selector="touchSignUpBtn:" destination="49J-AI-YZt" eventType="touchUpInside" id="nDE-Pa-Qq7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gn-LB-lNE" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="38" y="514.5" width="300" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gn-LB-lNE" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="38" y="514" width="300" height="40"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="touchFBLoginBtn:" destination="49J-AI-YZt" eventType="touchUpInside" id="0ha-Ya-9O0"/>
@@ -304,12 +307,14 @@
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="g5l-gU-VfW" firstAttribute="leading" secondItem="kxR-Jc-f9Y" secondAttribute="centerXWithinMargins" multiplier="0.2" id="027-1d-aYM"/>
+                            <constraint firstItem="f2W-DV-Fl3" firstAttribute="top" secondItem="rIv-Yc-dkT" secondAttribute="bottom" id="296-uz-XWm"/>
                             <constraint firstItem="nbt-41-4LZ" firstAttribute="centerX" secondItem="alb-cc-Ptn" secondAttribute="centerX" id="68X-YZ-hfH"/>
                             <constraint firstItem="gfg-s1-HC9" firstAttribute="leading" secondItem="alb-cc-Ptn" secondAttribute="leading" multiplier="1.1" id="6ht-mE-DfZ"/>
                             <constraint firstItem="unr-YJ-oTX" firstAttribute="trailing" secondItem="g5l-gU-VfW" secondAttribute="trailing" id="7RE-tF-bOO"/>
                             <constraint firstItem="g5l-gU-VfW" firstAttribute="top" secondItem="unr-YJ-oTX" secondAttribute="bottom" constant="3" id="8pf-Ap-amV"/>
                             <constraint firstItem="kDW-j5-Uii" firstAttribute="top" secondItem="f2W-DV-Fl3" secondAttribute="top" multiplier="0.92" id="CJk-Bl-QYY"/>
                             <constraint firstItem="nbt-41-4LZ" firstAttribute="top" secondItem="alb-cc-Ptn" secondAttribute="bottom" constant="32" id="D7V-Tp-6Gd"/>
+                            <constraint firstItem="rIv-Yc-dkT" firstAttribute="leading" secondItem="kxR-Jc-f9Y" secondAttribute="leading" id="GZt-pr-lQM"/>
                             <constraint firstItem="alb-cc-Ptn" firstAttribute="top" secondItem="gfg-s1-HC9" secondAttribute="bottom" constant="5" id="Gmt-bC-aF4"/>
                             <constraint firstItem="AUb-8i-At2" firstAttribute="leading" secondItem="gfg-s1-HC9" secondAttribute="trailing" constant="8" id="I0L-0x-tyf"/>
                             <constraint firstItem="alb-cc-Ptn" firstAttribute="width" secondItem="g5l-gU-VfW" secondAttribute="width" id="Luw-r4-Tb2"/>
@@ -318,6 +323,7 @@
                             <constraint firstItem="4Gn-LB-lNE" firstAttribute="centerX" secondItem="nbt-41-4LZ" secondAttribute="centerX" id="Tkv-p1-HWS"/>
                             <constraint firstItem="6Uw-V3-8Qy" firstAttribute="leading" secondItem="g5l-gU-VfW" secondAttribute="leading" multiplier="1.1" id="URf-xe-rpu"/>
                             <constraint firstItem="kDW-j5-Uii" firstAttribute="centerX" secondItem="4Gn-LB-lNE" secondAttribute="centerX" id="Uqp-Tf-wQ5"/>
+                            <constraint firstItem="rIv-Yc-dkT" firstAttribute="top" secondItem="kxR-Jc-f9Y" secondAttribute="top" id="ZqV-D1-7ZP"/>
                             <constraint firstItem="bE7-fE-5HF" firstAttribute="centerX" secondItem="kxR-Jc-f9Y" secondAttribute="centerX" id="aVM-z5-7KW"/>
                             <constraint firstItem="4Gn-LB-lNE" firstAttribute="top" secondItem="nbt-41-4LZ" secondAttribute="bottom" multiplier="1.15" id="brg-0X-PoA"/>
                             <constraint firstItem="alb-cc-Ptn" firstAttribute="centerX" secondItem="g5l-gU-VfW" secondAttribute="centerX" id="f9a-30-KLn"/>
@@ -329,6 +335,7 @@
                             <constraint firstItem="bE7-fE-5HF" firstAttribute="top" secondItem="kxR-Jc-f9Y" secondAttribute="centerY" multiplier="0.3" id="p1a-dA-LKH"/>
                             <constraint firstItem="unr-YJ-oTX" firstAttribute="leading" secondItem="6Uw-V3-8Qy" secondAttribute="trailing" constant="8" id="qnf-cg-mNK"/>
                             <constraint firstItem="alb-cc-Ptn" firstAttribute="top" secondItem="g5l-gU-VfW" secondAttribute="bottom" constant="40" id="sAF-MR-Peq"/>
+                            <constraint firstAttribute="trailing" secondItem="rIv-Yc-dkT" secondAttribute="trailing" id="tgH-eK-mAx"/>
                             <constraint firstItem="VCl-Zo-dI8" firstAttribute="centerX" secondItem="kxR-Jc-f9Y" secondAttribute="centerX" id="v80-8G-Nru"/>
                             <constraint firstItem="nbt-41-4LZ" firstAttribute="width" secondItem="alb-cc-Ptn" secondAttribute="width" id="vDi-Hp-ymt"/>
                             <constraint firstItem="g5l-gU-VfW" firstAttribute="trailing" secondItem="kxR-Jc-f9Y" secondAttribute="centerXWithinMargins" multiplier="1.8" id="zbu-tN-9C8"/>
@@ -344,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYf-tO-ndc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="-1296"/>
+            <point key="canvasLocation" x="1092" y="-1296.7016491754123"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="M3C-AY-dAX">
@@ -740,6 +747,7 @@
     <resources>
         <image name="defaultUser" width="236" height="236"/>
         <image name="lock" width="512" height="512"/>
+        <image name="title-bg" width="903" height="1152"/>
         <image name="user" width="512" height="512"/>
     </resources>
 </document>

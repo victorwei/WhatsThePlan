@@ -57,6 +57,17 @@ class AddLocationViewController: UIViewController {
     }
     
     
+    
+    func locationAlert() {
+        
+        let alertController = UIAlertController(title: "!", message: "Please add a location", preferredStyle: .alert)
+        let alert = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alert)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
     //MARK: - IBActions
 
     @IBAction func addLocation(_ sender: Any) {
@@ -70,6 +81,7 @@ class AddLocationViewController: UIViewController {
     @IBAction func saveLocations(_ sender: Any) {
         if markerArray.count == 0 {
             //display error message
+            locationAlert()
             
         } else {
             

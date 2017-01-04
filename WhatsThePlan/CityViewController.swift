@@ -195,6 +195,7 @@ extension CityViewController: UISearchBarDelegate {
         //set filter to only show results for cities
         let filter = GMSAutocompleteFilter()
         filter.type = .city
+        filter.country = "US"
         
         //get the autuComplete queries and add them to the results array
         placesClient.autocompleteQuery(searchText, bounds: nil, filter: filter, callback: { [unowned self] (results, error) -> Void in
