@@ -51,6 +51,12 @@ class CreatePlanViewController: UIViewController {
         let sectionHeaderNib = UINib(nibName: "SectionTableViewCell", bundle: nil)
         tableView.register(sectionHeaderNib, forCellReuseIdentifier: "sectionHeaderCell")
         
+        
+//        let locationCellNib = UINib(nibName: "LocationMapCell", bundle: nil)
+//        tableView.register(locationCellNib, forCellReuseIdentifier: "locationCell")
+        
+        self.title = "Create Plan"
+        
     }
     
     
@@ -132,84 +138,87 @@ extension CreatePlanViewController: GetLocationsProtocol {
 extension CreatePlanViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return plan.sectionHeaders.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch section {
-        case 0:
-            return 2
-        case 1:
-            guard plan.plan != nil else {
-                return 1
-            }
-            return 2
-        case 2:
-            guard plan.locationMarkers != nil else {
-                return 1
-            }
-            return 2
-        default:
-            return 0
+        if plan.locationIDs == nil {
+            return plan.sectionHeaders.count
+        } else {
+            return plan.sectionHeaders.count + 1
         }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+ 
         switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell", for: indexPath) as! SectionTableViewCell
-            if indexPath.section == 0 {
-                cell.label.text = plan.sectionHeaders[0]
-                cell.selectionStyle = .none
-                cell.accessoryType = .none
-                
-            } else if indexPath.section == 1 {
-                cell.label.text = plan.sectionHeaders[1]
-                cell.accessoryType = .disclosureIndicator
-            } else {
-                cell.label.text = plan.sectionHeaders[2]
-                cell.accessoryType = .disclosureIndicator
-            }
-            return cell
             
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell", for: indexPath) as! DescriptionTableViewCell
+            cell.textField.delegate = self
+            cell.selectionStyle = .none
+            
+            return cell
             
         case 1:
             
-            if indexPath.section == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell", for: indexPath) as! DescriptionTableViewCell
-                cell.textField.delegate = self
-                cell.selectionStyle = .none
-                
-                return cell
-                
-            } else if indexPath.section == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "planCell", for: indexPath) as! PlanTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "planCell", for: indexPath) as! PlanTableViewCell
+            cell.accessoryType = .disclosureIndicator
+            cell.backgroundColor = UIColor.init(netHex: 0xF2F2F2)
+            if plan.plan != nil {
                 cell.label.text = plan.plan
-                return cell
-                
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "locationMapCell", for: indexPath) as! LocationMapTableViewCell
-                cell.setup(markers: plan.locationMarkers!)
-                return cell
             }
-        default:
+            return cell
             
+            
+        case 2:
+            
+        
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell", for: indexPath) as! SectionTableViewCell
+            cell.accessoryType = .disclosureIndicator
+            cell.backgroundColor = UIColor.init(netHex: 0xF2F2F2)
+            
+            
+            return cell
+            
+
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "locationMapCell", for: indexPath) as! LocationMapTableViewCell
+            
+            cell.setup(markers: plan.locationMarkers!)
+            
+            return cell
+            
+            
+            
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell") as! DescriptionTableViewCell
             return cell
+            
         }
+        
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let planIndex = IndexPath(row: 0, section: 1)
-        let mapIndex = IndexPath(row: 0, section: 2)
+        let planIndex = IndexPath(row: 1, section: 0)
+        let mapIndex = IndexPath(row: 2, section: 0)
         
         if indexPath == planIndex {
           
+            //present WritePlanVC set delegate to get info back
             let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WritePlanViewController") as! WritePlanViewController
             destinationVC.delegate = self
+            
+            
+            // If there is an existing plan, replace the textview's text with existing plan.
+            if let plantext = plan.plan {
+                destinationVC.planText = plantext
+            }
+            
             
             self.navigationController?.pushViewController(destinationVC, animated: true)
             
@@ -222,13 +231,18 @@ extension CreatePlanViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return UITableViewAutomaticDimension
     }
+    
+
     
 }
 

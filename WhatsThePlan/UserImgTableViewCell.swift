@@ -1,17 +1,19 @@
 //
-//  PlanTableViewCell.swift
+//  UserImgTableViewCell.swift
 //  WhatsThePlan
 //
-//  Created by Victor Wei on 12/5/16.
-//  Copyright © 2016 victorW. All rights reserved.
+//  Created by Victor Wei on 2/7/17.
+//  Copyright © 2017 victorW. All rights reserved.
 //
 
 import UIKit
 
-class PlanTableViewCell: UITableViewCell {
+class UserImgTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var userImgView: UIImageView!
     
-    @IBOutlet weak var label: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

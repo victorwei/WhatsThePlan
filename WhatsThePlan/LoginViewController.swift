@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import FBSDKLoginKit
 import FBSDKCoreKit
-
+import CoreData
 
 enum loginError {
     case empty, invalid
@@ -26,16 +26,16 @@ class LoginViewController: UIViewController {
     
     
     @IBOutlet weak var fbLogin: FBSDKLoginButton!
+    
+    
+    
+    var currentUsers: [NSManagedObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //setup()
 
-        // Do any additional setup after loading the view.
-        setup()
     }
-
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,6 +45,14 @@ class LoginViewController: UIViewController {
 
     func setup() {
         
+        let credentials = checkCurrentUser()
+        if credentials.0 == true {
+            let email = credentials.1?[0]
+            let password = credentials.1?[1]
+            login(email: email!, password: password!)
+        }
+        
+        
         userNameTextField.attributedPlaceholder = NSAttributedString(string:"username",
                                                                      attributes:[NSForegroundColorAttributeName: UIColor.white])
         passwordTextField.attributedPlaceholder = NSAttributedString(string:"password",
@@ -53,13 +61,77 @@ class LoginViewController: UIViewController {
         fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"];
         fbLoginButton.delegate = self
         
+        
+        
+        
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //keep the navigation bar translucent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
+        
+        
+        UIApplication.shared.statusBarView?.backgroundColor = nil
     }
     
     
     func goSignUp () {
         
-        let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-        present(destinationVC, animated: true, completion: nil)
+//        let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+//        present(destinationVC, animated: true, completion: nil)
+        
+        
+        
+        let destinationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        let destinationNC = UINavigationController(rootViewController: destinationVC)
+        present(destinationNC, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    
+    func checkCurrentUser() -> (Bool, [String]?) {
+        
+        let managedContext = getContext()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CurrentUser")
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            currentUsers = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+            return (false, nil)
+        }
+        
+        
+        if currentUsers.count != 0 {
+            
+            for user in currentUsers {
+                
+                if user.value(forKey: "signedIn") as? Bool == true {
+                    let email = user.value(forKey: "email") as? String
+                    let password = user.value(forKey: "password") as? String
+                    let credentials: [String] = [email!, password!]
+                    
+                    return(true, credentials)
+                }
+                
+            }
+        }
+        return (false, nil)
         
     }
     
@@ -95,6 +167,52 @@ class LoginViewController: UIViewController {
     
     
     
+    func saveCurrentUser() {
+        
+        let managedContext = getContext()
+        let entity = NSEntityDescription.entity(forEntityName: "CurrentUser", in: managedContext)
+        
+        let user = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        user.setValue(userNameTextField.text!, forKey: "email")
+        user.setValue(passwordTextField.text!, forKey: "password")
+        user.setValue(true, forKey: "signedIn")
+        
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.description)")
+        }
+        
+    }
+    
+    
+    
+    func login(email: String, password: String) {
+        
+        Database.sharedInstance.login(email: email, password: password, completion: { [unowned self] (success) in
+            if success {
+                
+                var tabViewController = UITabBarController()
+                tabViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabViewController") as! UITabBarController
+                self.present(tabViewController, animated: true, completion: nil)
+                
+            } else {
+                
+                //return alert stating username /pw dont' match
+                self.invalidLoginAlert(alert: loginError.invalid)
+                
+            }
+            
+            
+        })
+        
+        
+    }
+    
+    
+    
     // MARK: - IBActions
     
     
@@ -102,22 +220,9 @@ class LoginViewController: UIViewController {
         
         if verifyFields() {
             
-            Database.sharedInstance.login(email: userNameTextField.text!, password: passwordTextField.text!, completion: { [unowned self] (success) in
-                if success {
-                    
-                    var tabViewController = UITabBarController()
-                    tabViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabViewController") as! UITabBarController
-                    self.present(tabViewController, animated: true, completion: nil)
-                    
-                } else {
-                    
-                    //return alert stating username /pw dont' match
-                    self.invalidLoginAlert(alert: loginError.invalid)
-                    
-                }
-                
-                
-            })
+            login(email: userNameTextField.text!, password: passwordTextField.text!)
+            saveCurrentUser()
+            
         } else {
             
             //return alert stating fields are not filled out

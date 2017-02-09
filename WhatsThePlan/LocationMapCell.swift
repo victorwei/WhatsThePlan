@@ -1,45 +1,58 @@
 //
-//  LocationMapTableViewCell.swift
+//  LocationMapCell.swift
 //  WhatsThePlan
 //
-//  Created by Victor Wei on 12/5/16.
-//  Copyright © 2016 victorW. All rights reserved.
+//  Created by Victor Wei on 1/25/17.
+//  Copyright © 2017 victorW. All rights reserved.
 //
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 
-class LocationMapTableViewCell: UITableViewCell {
+class LocationMapCell: UITableViewCell {
 
-    @IBOutlet weak var googleMapContainerView: UIView!
+    
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var googleContainerView: UIView!
+    
     
     var googleMapView: GMSMapView!
-
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        //initialSetup()
-        
+    }
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        initialSetup()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
     
     func initialSetup() {
         
-        googleMapView = GMSMapView(frame: googleMapContainerView.frame)
+        googleMapView = GMSMapView(frame: googleContainerView.frame)
+        let camera = GMSCameraPosition.camera(withLatitude: City.sharedInstance.latitude, longitude: City.sharedInstance.longitude, zoom: 11.5)
+        googleMapView.camera = camera
+        
         self.addSubview(googleMapView)
         
     }
     
-    
-    
     func setup(markers: [GMSMarker]) {
         
-        let googleMapView = GMSMapView(frame: googleMapContainerView.frame)
+        let googleMapView = GMSMapView(frame: googleContainerView.frame)
         let camera = GMSCameraPosition.camera(withLatitude: City.sharedInstance.latitude, longitude: City.sharedInstance.longitude, zoom: 11.5)
         googleMapView.camera = camera
+        googleMapView.autoresizesSubviews = true
         
         self.addSubview(googleMapView)
         
@@ -54,7 +67,7 @@ class LocationMapTableViewCell: UITableViewCell {
     
     func locationViewSetup (marker: GMSMarker, latitude: Double, longitude: Double) {
         
-        let googleMapView = GMSMapView(frame: googleMapContainerView.frame)
+        let googleMapView = GMSMapView(frame: googleContainerView.frame)
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 11.5)
         googleMapView.camera = camera
         self.addSubview(googleMapView)
@@ -63,11 +76,6 @@ class LocationMapTableViewCell: UITableViewCell {
         
     }
     
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
     
 }

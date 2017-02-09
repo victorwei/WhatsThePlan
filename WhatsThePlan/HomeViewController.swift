@@ -118,6 +118,8 @@ extension HomeViewController: UISearchBarDelegate {
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = true
 //        definesPresentationContext = false
+        searchController.searchBar.barTintColor = UIColor.appTheme
+        
         self.present(searchController, animated: true, completion: nil)
         return true
     }

@@ -71,7 +71,6 @@ class CityViewController: UIViewController{
         navigationItem.titleView = searchBar
         searchBar.delegate = self
         
-
         
     }
     
@@ -184,6 +183,7 @@ extension CityViewController: UISearchBarDelegate {
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = true
         //        definesPresentationContext = false
+        searchController.searchBar.barTintColor = UIColor.appTheme
         self.present(searchController, animated: true, completion: nil)
         return true
     }

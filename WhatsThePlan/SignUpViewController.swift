@@ -70,8 +70,19 @@ class SignUpViewController: UIViewController {
         
         pickerController.delegate = self
         
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        self.view.addGestureRecognizer(tap)
+        
     }
     
+    
+    func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+//        bioTextView.resignFirstResponder()
+        self.view.endEditing(true)
+        
+
+    }
     
     
     func verifyFields() {
@@ -99,6 +110,7 @@ class SignUpViewController: UIViewController {
             } else {
                 
                 //alert user that email/combo already exists
+                print("email already exists")
             }
         })
         

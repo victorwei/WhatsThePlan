@@ -74,6 +74,7 @@ class AddLocationViewController: UIViewController {
         
         let searchBar = UISearchController(searchResultsController: autoCompleteController)
         searchBar.searchBar.delegate = self
+        searchBar.searchBar.barTintColor = UIColor.appTheme
         present(searchBar, animated: true, completion: nil)
     }
     

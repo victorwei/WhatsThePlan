@@ -224,17 +224,24 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             
             
             if let types = plan.locations?[index].types {
-                var typetext = ""
-                for type in types {
-                    typetext = typetext + type + ", "
+                
+                if types.count != 0 {
+                    
+                    var typetext = ""
+                    for type in types {
+                        typetext = typetext + type + ", "
+                    }
+                    let typesCount = typetext.characters.count
+                    let stringCount = typesCount - 2
+                    
+                    let index = typetext.index(typetext.startIndex, offsetBy: stringCount)
+                    typetext = typetext.substring(to: index)
+                    
+                    cell.typesLabel.text = typetext
+                } else {
+                    cell.typesLabel.text = ""
                 }
-                let typesCount = typetext.characters.count
-                let stringCount = typesCount - 2
                 
-                let index = typetext.index(typetext.startIndex, offsetBy: stringCount)
-                typetext = typetext.substring(to: index)
-                
-                cell.typesLabel.text = typetext
             }
             
             

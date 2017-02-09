@@ -11,6 +11,7 @@ import UIKit
 class DescriptionTableViewCell: UITableViewCell {
 
 
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
     override func awakeFromNib() {

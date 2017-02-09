@@ -27,12 +27,20 @@
 		574991791E00788A009F3F58 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 574991771E00788A009F3F58 /* FBSDKLoginKit.framework */; };
 		5749917B1E0078CB009F3F58 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749917A1E0078CB009F3F58 /* FBSDKShareKit.framework */; };
 		5749917D1E009939009F3F58 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749917C1E009939009F3F58 /* SignUpViewController.swift */; };
+		57553F8F1E400DF900B61060 /* SignInDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57553F8E1E400DF900B61060 /* SignInDataSource.swift */; };
+		57553F931E401B3B00B61060 /* SignUpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57553F911E401B3B00B61060 /* SignUpTextView.swift */; };
+		57553F941E401B3B00B61060 /* SignUpTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57553F921E401B3B00B61060 /* SignUpTextView.xib */; };
 		575744171E045CB40067CE81 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575744151E045CB40067CE81 /* TitleTableViewCell.swift */; };
 		575744181E045CB40067CE81 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575744161E045CB40067CE81 /* TitleTableViewCell.xib */; };
 		5757441B1E045D7B0067CE81 /* SectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575744191E045D7B0067CE81 /* SectionHeaderTableViewCell.swift */; };
 		5757441C1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5757441A1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib */; };
+		5758CB891E453B51007E6C88 /* AddBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5758CB881E453B51007E6C88 /* AddBioViewController.swift */; };
 		575CD20B1DFB30DC004E0A3D /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CD20A1DFB30DC004E0A3D /* CustomSearchBar.swift */; };
 		575CD20D1DFB38B0004E0A3D /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CD20C1DFB38B0004E0A3D /* CustomSearchController.swift */; };
+		5770E3E91E4A8EF2009783AB /* UserImgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770E3E71E4A8EF2009783AB /* UserImgTableViewCell.swift */; };
+		5770E3EA1E4A8EF2009783AB /* UserImgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5770E3E81E4A8EF2009783AB /* UserImgTableViewCell.xib */; };
+		5778DB991E396D7700539FC2 /* LocationMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5778DB971E396D7700539FC2 /* LocationMapCell.swift */; };
+		5778DB9A1E396D7700539FC2 /* LocationMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5778DB981E396D7700539FC2 /* LocationMapCell.xib */; };
 		57850B271E01E149000186AA /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57850B261E01E149000186AA /* CityViewModel.swift */; };
 		57850B2A1E01EE33000186AA /* CityResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57850B281E01EE33000186AA /* CityResultsTableViewCell.swift */; };
 		57850B2B1E01EE33000186AA /* CityResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57850B291E01EE33000186AA /* CityResultsTableViewCell.xib */; };
@@ -79,6 +87,7 @@
 		57F369841DFCCFB50031F3D5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F369831DFCCFB50031F3D5 /* Colors.swift */; };
 		57F3698D1DFCD66D0031F3D5 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F3698B1DFCD66D0031F3D5 /* LocationViewController.swift */; };
 		57F3698E1DFCD66D0031F3D5 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F3698C1DFCD66D0031F3D5 /* LocationViewController.xib */; };
+		57FBCA291E3C2AB500235A8B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FBCA281E3C2AB500235A8B /* SignInViewController.swift */; };
 		752CFE30C87632FC9D3C4715 /* Pods_WhatsThePlanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2BA9A98CC2676CEC558B1DC /* Pods_WhatsThePlanTests.framework */; };
 		A4840A604C76A25B57272351 /* Pods_WhatsThePlanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B29AF627BA6DC7D64136D4EA /* Pods_WhatsThePlanUITests.framework */; };
 		BAE72FB8875E2D0107BC6E60 /* Pods_WhatsThePlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16151692D08E08582606C857 /* Pods_WhatsThePlan.framework */; };
@@ -124,12 +133,20 @@
 		574991771E00788A009F3F58 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		5749917A1E0078CB009F3F58 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		5749917C1E009939009F3F58 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		57553F8E1E400DF900B61060 /* SignInDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInDataSource.swift; sourceTree = "<group>"; };
+		57553F911E401B3B00B61060 /* SignUpTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTextView.swift; sourceTree = "<group>"; };
+		57553F921E401B3B00B61060 /* SignUpTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpTextView.xib; sourceTree = "<group>"; };
 		575744151E045CB40067CE81 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		575744161E045CB40067CE81 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
 		575744191E045D7B0067CE81 /* SectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5757441A1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		5758CB881E453B51007E6C88 /* AddBioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBioViewController.swift; sourceTree = "<group>"; };
 		575CD20A1DFB30DC004E0A3D /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		575CD20C1DFB38B0004E0A3D /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		5770E3E71E4A8EF2009783AB /* UserImgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserImgTableViewCell.swift; sourceTree = "<group>"; };
+		5770E3E81E4A8EF2009783AB /* UserImgTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserImgTableViewCell.xib; sourceTree = "<group>"; };
+		5778DB971E396D7700539FC2 /* LocationMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMapCell.swift; sourceTree = "<group>"; };
+		5778DB981E396D7700539FC2 /* LocationMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationMapCell.xib; sourceTree = "<group>"; };
 		57850B261E01E149000186AA /* CityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		57850B281E01EE33000186AA /* CityResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityResultsTableViewCell.swift; sourceTree = "<group>"; };
 		57850B291E01EE33000186AA /* CityResultsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityResultsTableViewCell.xib; sourceTree = "<group>"; };
@@ -183,6 +200,7 @@
 		57F369831DFCCFB50031F3D5 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		57F3698B1DFCD66D0031F3D5 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		57F3698C1DFCD66D0031F3D5 /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		57FBCA281E3C2AB500235A8B /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		77F48E2328CEAE0E5DA5EB4B /* Pods-WhatsThePlanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsThePlanUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsThePlanUITests/Pods-WhatsThePlanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		813B5652196B3A55269151E7 /* Pods-WhatsThePlanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsThePlanUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsThePlanUITests/Pods-WhatsThePlanUITests.release.xcconfig"; sourceTree = "<group>"; };
 		874F8761F49621D088126CF8 /* Pods-WhatsThePlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsThePlan.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsThePlan/Pods-WhatsThePlan.release.xcconfig"; sourceTree = "<group>"; };
@@ -279,6 +297,8 @@
 			children = (
 				571A58CC1DF62E6D00D899AA /* DescriptionTableViewCell.swift */,
 				571A58CD1DF62E6D00D899AA /* DescriptionTableViewCell.xib */,
+				5778DB971E396D7700539FC2 /* LocationMapCell.swift */,
+				5778DB981E396D7700539FC2 /* LocationMapCell.xib */,
 				571A58D11DF6316100D899AA /* LocationMapTableViewCell.swift */,
 				571A58D21DF6316100D899AA /* LocationMapTableViewCell.xib */,
 				571A58D51DF639EC00D899AA /* PlanTableViewCell.swift */,
@@ -311,11 +331,24 @@
 			name = "View Location";
 			sourceTree = "<group>";
 		};
+		57553F901E401B1000B61060 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				57553F911E401B3B00B61060 /* SignUpTextView.swift */,
+				57553F921E401B3B00B61060 /* SignUpTextView.xib */,
+				5770E3E71E4A8EF2009783AB /* UserImgTableViewCell.swift */,
+				5770E3E81E4A8EF2009783AB /* UserImgTableViewCell.xib */,
+			);
+			name = SignIn;
+			sourceTree = "<group>";
+		};
 		578A72771DF1E2CC00876A13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				574049681DDD285D003C8AD1 /* LoginViewController.swift */,
 				5749917C1E009939009F3F58 /* SignUpViewController.swift */,
+				57FBCA281E3C2AB500235A8B /* SignInViewController.swift */,
+				5758CB881E453B51007E6C88 /* AddBioViewController.swift */,
 				57AA6B181DDCF80D008E478F /* HomeViewController.swift */,
 				578A72781DF1E31700876A13 /* CityViewController.swift */,
 				578D4EC41DF9EC4F00B85EE2 /* View Plan */,
@@ -328,6 +361,7 @@
 		578A727E1DF20A1300876A13 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				57553F901E401B1000B61060 /* SignIn */,
 				578D4EC51DF9EE7A00B85EE2 /* View Plan */,
 				571A58C91DF62E1300D899AA /* Create Plan */,
 				571A58D01DF62E7300D899AA /* City */,
@@ -455,6 +489,7 @@
 				57286BC31DFF4AC6005214B2 /* Database.swift */,
 				57AA1AA41DFD165600306D46 /* User.swift */,
 				57850B261E01E149000186AA /* CityViewModel.swift */,
+				57553F8E1E400DF900B61060 /* SignInDataSource.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -536,7 +571,7 @@
 				TargetAttributes = {
 					57AA6B121DDCF80C008E478F = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = D554CE5HXE;
+						DevelopmentTeam = K679B9P6T4;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -586,7 +621,9 @@
 				571A58DC1DF63B7600D899AA /* SectionTableViewCell.xib in Resources */,
 				57F3698E1DFCD66D0031F3D5 /* LocationViewController.xib in Resources */,
 				57AA6B241DDCF80D008E478F /* LaunchScreen.storyboard in Resources */,
+				5770E3EA1E4A8EF2009783AB /* UserImgTableViewCell.xib in Resources */,
 				571A58CF1DF62E6D00D899AA /* DescriptionTableViewCell.xib in Resources */,
+				5778DB9A1E396D7700539FC2 /* LocationMapCell.xib in Resources */,
 				578D4ECF1DF9EEFD00B85EE2 /* LocationTableViewCell.xib in Resources */,
 				57AA6B211DDCF80D008E478F /* Assets.xcassets in Resources */,
 				571A58D41DF6316100D899AA /* LocationMapTableViewCell.xib in Resources */,
@@ -596,6 +633,7 @@
 				57286BB61DFF0CB6005214B2 /* LocationPhotoTableViewCell.xib in Resources */,
 				5757441C1E045D7B0067CE81 /* SectionHeaderTableViewCell.xib in Resources */,
 				575744181E045CB40067CE81 /* TitleTableViewCell.xib in Resources */,
+				57553F941E401B3B00B61060 /* SignUpTextView.xib in Resources */,
 				57AA6B1C1DDCF80D008E478F /* Main.storyboard in Resources */,
 				578D4ED91DFA1DFE00B85EE2 /* MapOfPlanViewController.xib in Resources */,
 				57286BC21DFF3D96005214B2 /* LocationDetailTableViewCell.xib in Resources */,
@@ -778,23 +816,29 @@
 				578D4ED81DFA1DFE00B85EE2 /* MapOfPlanViewController.swift in Sources */,
 				57AA6B171DDCF80D008E478F /* AppDelegate.swift in Sources */,
 				571A58C41DF6279200D899AA /* CreatePlanViewController.swift in Sources */,
+				57553F8F1E400DF900B61060 /* SignInDataSource.swift in Sources */,
 				575CD20B1DFB30DC004E0A3D /* CustomSearchBar.swift in Sources */,
 				57286BC11DFF3D96005214B2 /* LocationDetailTableViewCell.swift in Sources */,
 				57F3698D1DFCD66D0031F3D5 /* LocationViewController.swift in Sources */,
 				5757441B1E045D7B0067CE81 /* SectionHeaderTableViewCell.swift in Sources */,
 				575CD20D1DFB38B0004E0A3D /* CustomSearchController.swift in Sources */,
 				571A58DB1DF63B7600D899AA /* SectionTableViewCell.swift in Sources */,
+				5770E3E91E4A8EF2009783AB /* UserImgTableViewCell.swift in Sources */,
 				57F369841DFCCFB50031F3D5 /* Colors.swift in Sources */,
 				578A727C1DF20A0D00876A13 /* CityTableViewCell.swift in Sources */,
 				579EC2C41DF8818700704D1C /* CurrentCityController.swift in Sources */,
 				57EF2E7D1DF47C5D002C7909 /* AddLocationViewController.swift in Sources */,
 				571A58D31DF6316100D899AA /* LocationMapTableViewCell.swift in Sources */,
+				57FBCA291E3C2AB500235A8B /* SignInViewController.swift in Sources */,
 				578D4ED31DFA102000B85EE2 /* LocationInfo.swift in Sources */,
+				5758CB891E453B51007E6C88 /* AddBioViewController.swift in Sources */,
 				578D4ECA1DF9EED800B85EE2 /* UserTableViewCell.swift in Sources */,
 				578A72801DF2377C00876A13 /* LocationController.swift in Sources */,
+				57553F931E401B3B00B61060 /* SignUpTextView.swift in Sources */,
 				5749917D1E009939009F3F58 /* SignUpViewController.swift in Sources */,
 				57907C0E1DF67B6800821A06 /* WritePlanViewController.swift in Sources */,
 				57286BC41DFF4AC6005214B2 /* Database.swift in Sources */,
+				5778DB991E396D7700539FC2 /* LocationMapCell.swift in Sources */,
 				571A58CE1DF62E6D00D899AA /* DescriptionTableViewCell.swift in Sources */,
 				57850B2A1E01EE33000186AA /* CityResultsTableViewCell.swift in Sources */,
 				575744171E045CB40067CE81 /* TitleTableViewCell.swift in Sources */,
@@ -951,12 +995,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WhatsThePlan/WhatsThePlan.entitlements;
-				DEVELOPMENT_TEAM = D554CE5HXE;
+				DEVELOPMENT_TEAM = K679B9P6T4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WhatsThePlan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vDub.WhatsThePlan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -973,12 +1018,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WhatsThePlan/WhatsThePlan.entitlements;
-				DEVELOPMENT_TEAM = D554CE5HXE;
+				DEVELOPMENT_TEAM = K679B9P6T4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WhatsThePlan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vDub.WhatsThePlan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
