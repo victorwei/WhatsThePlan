@@ -12,6 +12,12 @@ class SignInViewController: UIViewController {
     
     
     
+    //Enum to capture error cases
+    enum SignUpError {
+        case empty, password, userExists, noerror
+    }
+    
+    
     
     // MARK: - Properties
     
@@ -53,7 +59,7 @@ class SignInViewController: UIViewController {
         
         
         formDataSource = SignInData()
-        
+        var currentError = SignUpError.noerror
         
         
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.appTheme
@@ -137,11 +143,16 @@ extension SignInViewController {
                 
                 //Print error:
                 print("One of the fields is not filled out")
+                
+                displayAlert(errortype: SignUpError.empty)
+                
+                
                 return
         }
         
         if pw != pwconfirm {
             print("passwords don't match")
+            displayAlert(errortype: SignUpError.password)
             return
         }
         
@@ -161,12 +172,39 @@ extension SignInViewController {
                 print("success!")
             } else {
                 
-                //alert user that email/combo already exists
+                self.displayAlert(errortype: SignUpError.userExists)
+                
             }
         })
     }
     
     
+    
+    
+    func displayAlert(errortype: SignUpError) {
+        
+        var alertController = UIAlertController()
+        
+        switch errortype {
+        case .empty:
+            alertController = UIAlertController(title: "!", message: "One or more fields are empty.  Please enter all fields", preferredStyle: .alert)
+            
+        case .password:
+            alertController = UIAlertController(title: "!", message: "Passwords do not match!  Please retype the password", preferredStyle: .alert)
+            
+        case .userExists:
+            alertController = UIAlertController(title: "!", message: "E-mail has already been registered.  Please use a different E-mail", preferredStyle: .alert)
+            
+        default:
+            alertController = UIAlertController(title: "!", message: "No Alert", preferredStyle: .alert)
+        }
+        
+        let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+        
+        
+    }
 }
 
 
@@ -187,12 +225,13 @@ extension SignInViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cellIndex = indexPath.row
         
+        
+        //Cell to add the bio.  Links to the AddBioVC
         if cellIndex == 6 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "bioCell", for: indexPath) as! SignUpTextView
             
             cell.backgroundColor = UIColor.init(netHex: 0xF2F2F2)
-            
             cell.accessoryType = .disclosureIndicator
             return cell
             
@@ -200,7 +239,6 @@ extension SignInViewController: UITableViewDelegate, UITableViewDataSource {
         }  else if cellIndex == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserImgTableViewCell
-            
             cell.selectionStyle = .none
             
             
@@ -208,13 +246,15 @@ extension SignInViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.userImgView.image = UIImage(data: photo)
                 userPhoto = photo
             }
+       
             
-            cell.userImgView.layer.cornerRadius = cell.userImgView.frame.width / 2
-            cell.userImgView.clipsToBounds = true
-            
+            //Add tap gesture recognizer for the ImageView
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.changeUserImg(_:)))
             cell.userImgView.isUserInteractionEnabled = true
             cell.userImgView.addGestureRecognizer(tap)
+            
+            //Make sure the user image is a circle
+            cell.roundUserImg()
             
             return cell
             
@@ -273,11 +313,15 @@ extension SignInViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 5 {
+        if indexPath.row == 6 {
             
             
             let VC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddBioViewController") as! AddBioViewController
             VC.delegate = self
+            if let currentBio = formDataSource.bio {
+                VC.bio = currentBio
+            }
+            
             self.navigationController?.pushViewController(VC, animated: true)
             
         }
@@ -316,28 +360,28 @@ extension SignInViewController: UITextFieldDelegate {
         
         switch textField.tag {
         
-        case 0:
+        case 1:
             if let inputText = textField.text {
                 text = inputText
                 formDataSource.fName = text
             }
         
-        case 1:
+        case 2:
             if let inputText = textField.text {
                 text = inputText
                 formDataSource.lName = text
             }
-        case 2:
+        case 3:
             if let inputText = textField.text {
                 text = inputText
                 formDataSource.email = text
             }
-        case 3:
+        case 4:
             if let inputText = textField.text {
                 text = inputText
                 formDataSource.password = text
             }
-        case 4:
+        case 5:
             if let inputText = textField.text {
                 text = inputText
                 formDataSource.passwordConfirm = text
@@ -356,11 +400,11 @@ extension SignInViewController: AddBio {
         formDataSource.bio = bio
         
         //change the cell label to reflec the bio text
-        let indexPath = IndexPath(row: 5, section: 0)
+        let indexPath = IndexPath(row: 6, section: 0)
         let cell = tableView.cellForRow(at: indexPath) as! SignUpTextView
         cell.infoLabel.text = bio
         
-        
+        tableView.reloadData()
     }
 }
 

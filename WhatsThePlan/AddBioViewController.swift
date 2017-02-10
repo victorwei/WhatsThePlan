@@ -14,17 +14,28 @@ class AddBioViewController: UIViewController {
     
     weak var delegate: AddBio!
     
+    var bio: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setup()
+        
     }
     
     func setup() {
         
         textView.delegate = self
-        textView.text = "Add bio"
-        textView.textColor = UIColor.lightGray
+        
+        if let currentBio = bio {
+            textView.text = currentBio
+        } else {
+            textView.text = "Add bio"
+            textView.textColor = UIColor.lightGray
+        }
+        
+        
         
     }
 
@@ -66,8 +77,13 @@ class AddBioViewController: UIViewController {
 extension AddBioViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-        textView.textColor = UIColor.black
+        
+        //if the textColor is grey, that means the "placeholder text" is being shown.  Clear it and set the textColor to black
+        if textView.textColor == UIColor.lightGray {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+        
     }
     
     

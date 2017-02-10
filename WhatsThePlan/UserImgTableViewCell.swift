@@ -19,6 +19,15 @@ class UserImgTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    
+    
+    func roundUserImg() {
+        
+        userImgView.layer.cornerRadius = userImgView.frame.width / 2
+        userImgView.clipsToBounds = true
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
